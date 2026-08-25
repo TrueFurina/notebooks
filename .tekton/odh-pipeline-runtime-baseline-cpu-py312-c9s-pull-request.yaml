@@ -36,19 +36,19 @@ spec:
     - linux-m2xlarge/arm64
     - linux/ppc64le
     - linux/s390x
-  # - name: prefetch-input
-  #   value:
-  #   - path: prefetch-input/odh
-  #     type: rpm
-  #   - path: runtimes/baseline/ubi9-python-3.12
-  #     type: pip
-  #     binary:
-  #       arch: "x86_64,aarch64,ppc64le,s390x"
-  #     requirements_files: [requirements.cpu.txt]
   - name: hermetic
-    value: false
-  - name: rhel-subscription-activation-key
-    value: custom-notebooks-secret
+    value: true
+  - name: prefetch-input
+    value:
+    - path: prefetch-input/odh
+      type: rpm
+    - path: prefetch-input/odh
+      type: generic
+    - path: runtimes/baseline/ubi9-python-3.12
+      type: pip
+      binary:
+        arch: "x86_64,aarch64,ppc64le,s390x"
+      requirements_files: [requirements.cpu.txt]
   - name: additional-tags
     value:
     - 'odh-pr-{{revision}}'
